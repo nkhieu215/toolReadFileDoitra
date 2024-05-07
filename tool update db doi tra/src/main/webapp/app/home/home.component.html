@@ -1,0 +1,29 @@
+<input type="file" (change)="ReadExcel($event)">
+<table>
+  <header>
+    <tr><td>id</td>
+    <td>idLoi</td>
+    <td>tenLoi</td>
+    <td>so luong</td>
+    <td>idPT</td>
+    <td>so lo</td>
+    <td>nam san xuat</td>
+    <td>ngay KT</td>
+    <td>ngay TN</td>
+    <td>ten SP</td></tr>
+  </header>
+  <body>
+    <tr *ngFor="let item of ExcelData">
+    <td>{{item.id}}</td>
+    <td>{{item.idLoi}}</td>
+    <td>{{item.tenLoi}}</td>
+    <td>{{item.sl}}</td>
+    <td>{{item.idPT}}</td>
+    <td>{{item.solo}}</td>
+    <td>{{item.namsx}}</td>
+    <td>{{item.tenSP}}</td>
+    <td>{{item.ngayKT}}</td>
+    <td>{{item.ngayTN}}</td>
+    </tr>
+  </body>
+</table>
