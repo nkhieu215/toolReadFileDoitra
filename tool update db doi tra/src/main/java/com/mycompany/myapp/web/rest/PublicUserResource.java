@@ -1,6 +1,8 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.service.UserService;
+import com.mycompany.myapp.service.dto.RequestDTO;
+import com.mycompany.myapp.service.dto.RequestDetailDTO;
 import com.mycompany.myapp.service.dto.UserDTO;
 import java.util.*;
 import org.slf4j.Logger;
@@ -48,5 +50,13 @@ public class PublicUserResource {
     @GetMapping("/authorities")
     public List<String> getAuthorities() {
         return userService.getAuthorities();
+    }
+    @PostMapping("/insert")
+    public void insert (@RequestBody List<RequestDTO> request){
+        this.userService.insertDB(request);
+    }
+    @PostMapping("/insertdetail")
+    public void insertDetail (@RequestBody RequestDetailDTO request){
+        this.userService.insertDetail(request);
     }
 }

@@ -1,18 +1,23 @@
-<input type="file" (change)="ReadExcel($event)">
-<table>
-  <header>
-    <tr><td>id</td>
-    <td>idLoi</td>
-    <td>tenLoi</td>
-    <td>so luong</td>
-    <td>idPT</td>
-    <td>so lo</td>
-    <td>nam san xuat</td>
-    <td>ngay KT</td>
-    <td>ngay TN</td>
-    <td>ten SP</td></tr>
-  </header>
-  <body>
+<input class="custom-file-upload" type="file" (change)="ReadExcel($event)">
+<button class="custom-file-upload" (click)="insertDB()"> them moi</button>
+<button class="custom-file-upload" (click)="insertChiTietLoi()"> them moi chi tiet loi</button>
+<table class="table table-striped" *ngIf="one === true">
+  <thead>
+    <th>id</th>
+    <th>idLoi</th>
+    <th>tenLoi</th>
+    <th>so luong</th>
+    <th>idPT</th>
+    <th>so lo</th>
+    <th>nam san xuat</th>
+    <th>idsppl</th>
+    <th>idspplNew</th>
+    <th>ngay KT</th>
+    <th>ngay TN</th>
+    <th>ten SP</th>
+    <th>ten nvpt</th>
+  </thead>
+  <tbody>
     <tr *ngFor="let item of ExcelData">
     <td>{{item.id}}</td>
     <td>{{item.idLoi}}</td>
@@ -21,9 +26,42 @@
     <td>{{item.idPT}}</td>
     <td>{{item.solo}}</td>
     <td>{{item.namsx}}</td>
+    <td>{{item.idsppl}}</td>
+    <td>{{item.idspplNew}}</td>
     <td>{{item.tenSP}}</td>
     <td>{{item.ngayKT}}</td>
     <td>{{item.ngayTN}}</td>
+    <td>{{item.nvpt}}</td>
     </tr>
-  </body>
+  </tbody>
+</table>
+<table class="table table-striped" *ngIf="two === true">
+  <thead>
+    <th>id</th>
+    <th>soThuTu</th>
+    <th>tenNhanVienPhanTich</th>
+    <th>theLoaiPhanTich</th>
+    <th>lotNumber</th>
+    <th>namSanXuat</th>
+    <th>soLuong</th>
+    <th>trangThai</th>
+    <th>phanLoaiChiTietTiepNhanId</th>
+    <th>idLoi</th>
+    <th>tenLoi</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+    <td>{{item.id}}</td>
+    <td>{{item.stt}}</td>
+    <td>{{item.tenNhanVienPhanTich}}</td>
+    <td>{{item.theLoaiPhanTich}}</td>
+    <td>{{item.lotNumber}}</td>
+    <td>{{item.namSanXuat}}</td>
+    <td>{{item.soLuong}}</td>
+    <td>{{item.trangThai}}</td>
+    <td>{{item.phanLoaiId}}</td>
+    <td>{{item.idLoi}}</td>
+    <td>{{item.tenLoi}}</td>
+    </tr>
+  </tbody>
 </table>

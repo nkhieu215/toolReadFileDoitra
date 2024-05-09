@@ -7,6 +7,8 @@ import com.mycompany.myapp.repository.AuthorityRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.dto.AdminUserDTO;
+import com.mycompany.myapp.service.dto.RequestDTO;
+import com.mycompany.myapp.service.dto.RequestDetailDTO;
 import com.mycompany.myapp.service.dto.UserDTO;
 import java.time.Instant;
 import java.util.*;
@@ -217,5 +219,26 @@ public class UserService {
         }
         user.setActivated(activated);
         return user;
+    }
+    public void insertDB (List<RequestDTO> requests){
+        for (RequestDTO request:requests){
+            this.userRepository.insert(
+                request.getId(),
+                request.getStt(),
+                request.getTenNhanVienPhanTich(),
+                request.getTheLoaiPhanTich(),
+                request.getLotNumber(),
+                request.getSoLuong(),
+                request.getNamSanXuat(),
+                request.getTrangThai(),
+                request.getPhanLoaiId());
+        }
+    }
+    public void insertDetail(RequestDetailDTO requestDetailDTO){
+            this.userRepository.insertDetail(requestDetailDTO.getId(),
+                requestDetailDTO.getSoLuong(),
+                requestDetailDTO.getUsername(),
+                requestDetailDTO.getIdLoi(),
+                requestDetailDTO.getPhanTichId());
     }
 }
