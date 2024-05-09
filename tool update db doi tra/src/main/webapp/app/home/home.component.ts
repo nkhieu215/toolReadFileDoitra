@@ -93,8 +93,8 @@ export class HomeComponent implements OnInit {
                       // this.http.post<any>(this.resourceUrl,this.list).subscribe();
     }
     insertChiTietLoi():void{
-      const list:any[]=[]
-      for(let i =0 ;i<500;i++){
+      for(let i =0 ;i<this.list.length;i++){
+        const list:any[] =[]
         for(let j =1;j<= 39;j++){
           if(j === this.list[i].idLoi){
             const item ={
@@ -118,14 +118,13 @@ export class HomeComponent implements OnInit {
             this.idDetail++
           }
         }
-      } console.log('check thong tin', list)
-        // this.http.post<any>(this.resourceUrl1,list).subscribe()
-         // const data = document.getElementById("table-data");
-      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(list);
-      // create workbook
-      const wb: XLSX.WorkBook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'ChiTietSanXuatHangNgay');
-      XLSX.writeFile(wb, `${this.fileName}.xlsx`);
+        this.http.post<any>(this.resourceUrl1,list).subscribe()
+      }        // const data = document.getElementById("table-data");
+        // const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(list);
+      // // create workbook
+      // const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      // XLSX.utils.book_append_sheet(wb, ws, 'ChiTietSanXuatHangNgay');
+      // XLSX.writeFile(wb, `${this.fileName}.xlsx`);
     }
     // exportToExcel(): void {
     //   // const data = document.getElementById("table-data");
@@ -134,5 +133,10 @@ export class HomeComponent implements OnInit {
     //   const wb: XLSX.WorkBook = XLSX.utils.book_new();
     //   XLSX.utils.book_append_sheet(wb, ws, 'ChiTietSanXuatHangNgay');
     //   XLSX.writeFile(wb, `${this.fileName}.xlsx`);
+    // }
+    //  ExcelDateToJSDate(date:any):Date {
+    //   let timee = new Date(Math.round((date - 25569)*86400*1000));
+    //   timee = ((timee.getMonth() > 8) ? (timee.getMonth() + 1) : ('0' + (timee.getMonth() + 1))) + '/' + ((timee.getDate() > 9) ? timee.getDate() : ('0' + timee.getDate())) + '/' + timee.getFullYear();
+    //   return timee;
     // }
     };
